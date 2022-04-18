@@ -44,11 +44,11 @@ to test or run the application double click on the `index.html` file to open in 
 - Twitter: [@John_luang1](https://twitter.com/John_luang1)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mayengbam-ranjit-luwang-31962418/)
 
-👤 **Ranjit Luwang**
+👤 **Jenadius Nicholaus**
 
-- GitHub: [@aboongm](https://github.com/aboongm)
-- Twitter: [@John_luang1](https://twitter.com/John_luang1)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mayengbam-ranjit-luwang-31962418/)
+- GitHub: *[@jenadiusnicholaus](https://github.com/jenadiusnicholaus/)*.
+- Twiter: *[@jenadius_kaim](https://twitter.com/jenadius_kaim)*.
+- LinkedIn: *[@Jenadius Nicholaus](https://www.linkedin.com/in/jenadius-nicholaus-73126819b/)*.
 
 ## 🤝 Contributing
 
