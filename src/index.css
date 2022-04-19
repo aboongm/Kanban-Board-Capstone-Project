@@ -26,12 +26,16 @@ header {
   align-items: center;
 }
 
+nav {
+  width: 100%;
+}
+
 nav ul {
   padding-top: 19px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: inherit;
 }
 
