@@ -84,3 +84,32 @@ footer {
   font-weight: 200 !important;
   margin: 0;
 }
+
+img {
+  width: 136px;
+  height: auto;
+}
+
+.icon {
+  font-size: 16px;
+  color: white;
+}
+
+.showItem {
+  background-color: #2f4858;
+}
+
+.name {
+  font-size: 12px;
+  font-weight: normal;
+  color: white;
+  inline-size: 110px;
+  overflow-wrap: break-word;
+}
+
+.likes {
+  font-size: 12px;
+  font-weight: normal;
+  color: white;
+  text-align: right;
+}
