@@ -22,7 +22,7 @@ const displayShows = async () => {
                     <i class="fa-regular fa-heart icon px-1"></i>
                 </div>
                 <p class="m-0 px-1 pt-0 pb-1 likes w-100">Likes</p>
-                <h6 class="mx-0 mt-0 mb-1 px-2 py-1 border text-center name">Comments</h6>
+                <button type="button"  class="mx-0 mt-0 mb-1 px-2 py-1 border text-center comment">Comments</button>
                 </div>
             `;
       showList.insertAdjacentHTML('beforeend', showItem);
