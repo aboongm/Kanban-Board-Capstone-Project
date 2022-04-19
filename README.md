@@ -17,7 +17,7 @@ coming ....
 
 ## Live Demo
 
-[Ckeckout The live Site here](https://aboongm.github.io/Leaderboard/)
+[Ckeckout The live Site here](https://aboongm.github.io/Kanban-Board-Capstone-Project/)
 
 ### Prerequisites
 
@@ -29,7 +29,7 @@ coming ....
 
 to run the project locally, clone the project using the command
 
-`git clone git@github.com:aboongm/Leaderboard.git`
+`git clone git@github.com:aboongm/Kanban-Board-Capstone-Project.git`
 
 ### Run test
 
