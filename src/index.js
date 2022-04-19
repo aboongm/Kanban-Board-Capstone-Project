@@ -11,5 +11,3 @@ const searchShow = () => {
 };
 
 searchShow();
-
-

@@ -6,7 +6,7 @@ body {
   color: grey;
 }
 
-.logo{
+.logo {
   padding: 19px;
   border-radius: 100%;
   border: 2px solid rgb(198, 192, 185);
@@ -14,12 +14,11 @@ body {
   height: 70px;
   width: 70px;
   cursor: pointer;
-
 }
 
 header {
   top: 0;
-  padding: 70px 0 100px ;
+  padding: 70px 0 100px;
   height: 80px;
   width: 100%;
   display: flex;
@@ -32,9 +31,8 @@ nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   height: inherit;
-  
 }
 
 ul li.active {
@@ -42,7 +40,6 @@ ul li.active {
 }
 
 ul li {
-  
   list-style: none;
   margin-right: 12px;
   cursor: pointer;
