@@ -1,3 +1,5 @@
+import './index.css';
+
 const searchShow = () => {
   const url = 'https://api.tvmaze.com/shows/1/episodes';
   fetch(url)
@@ -9,3 +11,5 @@ const searchShow = () => {
 };
 
 searchShow();
+
+
