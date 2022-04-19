@@ -1,9 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
 }
 
 body {
-  color: grey;
+  background: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 18px;
+  background-image: linear-gradient(to left, #2f4858, #33658a);
 }
 
 .logo {
@@ -47,4 +58,25 @@ ul li {
 
 ul li:hover {
   border-bottom: 2px solid grey;
+}
+
+footer {
+  position: fixed !important;
+  color: white;
+  background: #2f4858;
+  font-size: 16px;
+  font-weight: 300;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100%;
+  text-align: left;
+}
+
+.footer-text {
+  font-size: 12px !important;
+  font-family: roboto, serif;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 200 !important;
+  margin: 0;
 }
