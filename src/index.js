@@ -27,10 +27,8 @@ window.addEventListener('click', () => {
         // show modal
         modal.style.display = 'block';
 
-        // show tv shows
-        const tvshowDetails = await showDetails(event.target.id);
-        const genres = document.getElementById('genres');
-        genres.innerHTML = '';
+        //==== show tv show details====
+        const tvshowDetails = await showDetails(event.target.id)
         document.getElementById('tv-show-title').textContent = tvshowDetails.name;
         document
           .getElementById('tv-show-img')
@@ -40,15 +38,18 @@ window.addEventListener('click', () => {
           'summary',
         ).innerHTML = `${tvshowDetails.summary}`;
 
-        // list comment
-        const res = await showComments(event.target.id);
-        const commentList = document.querySelector('.comment-list');
+        // show genre
+        const genres = document.getElementById('genres');
+        genres.innerHTML = '';
         let pElement = '';
         tvshowDetails.genres.forEach((item) => {
           pElement += `<p>${item}</p>`;
         });
         genres.innerHTML = pElement;
 
+        //==== show comment=====
+        const res = await showComments(event.target.id);
+        const commentList = document.querySelector('.comment-list');
         commentList.innerHTML = '';
         let liElement = '';
         res.forEach((result) => {
