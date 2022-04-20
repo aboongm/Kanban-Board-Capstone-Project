@@ -3,9 +3,11 @@ import {
   displayShows,
   updateLikes,
   postLikes,
-  showComments,
   showDetails,
+  createShowComment,
+  displayShowComment,
 } from '../modules/shows.js';
+import Utilities from '../modules/utils.js';
 
 const render = async () => {
   displayShows();
@@ -25,34 +27,26 @@ window.addEventListener('click', () => {
         // show modal
         modal.style.display = 'block';
 
-        // show tv shows
+        //= === show tv show details====
         const tvshowDetails = await showDetails(event.target.id);
-        const genres = document.getElementById('genres');
-        genres.innerHTML = '';
         document.getElementById('tv-show-title').textContent = tvshowDetails.name;
         document
           .getElementById('tv-show-img')
           .setAttribute('src', tvshowDetails.image.medium);
+        document.getElementById('show-id').setAttribute('data-id', event.target.id);
         document.getElementById(
           'summary',
         ).innerHTML = `${tvshowDetails.summary}`;
-        const res = await showComments(event.target.id);
-        const commentList = document.querySelector('.comment-list');
+
+        // show genre
+        const genres = document.getElementById('genres');
+        genres.innerHTML = '';
         let pElement = '';
         tvshowDetails.genres.forEach((item) => {
           pElement += `<p>${item}</p>`;
         });
         genres.innerHTML = pElement;
-
-        commentList.innerHTML = '';
-        let liElement = '';
-        res.forEach((result) => {
-          if (result === null) {
-            liElement += ' <li>No comments for now</li>';
-          }
-          liElement += ` <li>${result.creation_date} ${result.username} ${result.comment}</li>`;
-        });
-        commentList.innerHTML = liElement;
+        await displayShowComment(event.target.id);
       }
     });
   });
@@ -67,3 +61,24 @@ window.onclick = (event) => {
 document.getElementsByClassName('close')[0].onclick = () => {
   modal.style.display = 'none';
 };
+
+// add comment
+document.getElementById('add-comment').addEventListener('click', async () => {
+  const id = document.getElementById('show-id').getAttribute('data-id');
+  const username = document.getElementById('name').value;
+  const comment = document.getElementById('insights').value;
+  const sms = document.getElementById('message');
+
+  if (username !== '' && id !== '' && comment !== '') {
+    sms.style.display = 'block';
+    createShowComment(id, username, comment);
+    Utilities.cleanFormInput();
+    sms.style.color = 'green';
+    sms.textContent = '-Done';
+    await displayShowComment(id);
+  } else {
+    sms.style.display = 'block';
+    sms.style.color = 'red';
+    sms.textContent = '-Fields required';
+  }
+});

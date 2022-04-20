@@ -125,11 +125,44 @@ const showComments = async (id) => {
   }
 };
 
+const createShowComment = async (id, username, comment) => {
+  try {
+    const requestOptions = {
+      method: 'POST',
+      headers: Utilities.getHeader(),
+      body: Utilities.getParams(id, username, comment),
+    };
+    const response = await fetch(`${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/comments`, requestOptions);
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error(`HTTP error: ${response.status}`);
+  } catch (e) {
+    return Utilities.exception(e);
+  }
+};
+
+const displayShowComment = async (id) => {
+  //= === show comment=====
+  const res = await showComments(id);
+  const commentList = document.querySelector('.comment-list');
+  commentList.innerHTML = '';
+  let liElement = '';
+  res.forEach((result) => {
+    if (result === null) {
+      liElement += ' <li>No comments for now</li>';
+    }
+    liElement += ` <li>${result.creation_date} ${result.username} ${result.comment}</li>`;
+  });
+  commentList.innerHTML = liElement;
+};
+
 export {
   fetchShows,
   displayShows,
   updateLikes,
   postLikes,
-  showComments,
   showDetails,
+  createShowComment,
+  displayShowComment,
 };
