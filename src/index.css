@@ -24,19 +24,17 @@ body {
 }
 
 .logo {
-  padding: 19px;
+  padding: 14px 0;
   border-radius: 100%;
   border: 2px solid rgb(198, 192, 185);
   text-align: center;
-  height: 70px;
-  width: 70px;
+  height: 54px;
+  width: 54px;
   cursor: pointer;
 }
 
 header {
-  top: 0;
-  padding: 70px 0 100px;
-  height: 80px;
+  padding: 10px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -95,6 +93,15 @@ img {
 .icon {
   font-size: 16px;
   color: white;
+}
+
+.heart:hover {
+  cursor: pointer;
+  color: rgb(180, 179, 179);
+}
+
+.red {
+  color: crimson;
 }
 
 .showItem {

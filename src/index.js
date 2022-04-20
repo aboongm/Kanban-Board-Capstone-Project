@@ -1,15 +1,23 @@
 import './index.css';
 import {
   displayShows,
+  updateLikes,
+  postLikes,
   showComments,
   showDetails,
 } from '../modules/shows.js';
 
-displayShows();
+const render = async () => {
+  displayShows();
+  updateLikes();
+  postLikes();
+};
+
+render();
 
 const modal = document.querySelector('#item-modal');
 
-window.addEventListener('load', () => {
+window.addEventListener('click', () => {
   const btns = [...document.querySelectorAll('.comment')];
   btns.forEach((modalBtn) => {
     modalBtn.addEventListener('click', async (event) => {
@@ -22,8 +30,12 @@ window.addEventListener('load', () => {
         const genres = document.getElementById('genres');
         genres.innerHTML = '';
         document.getElementById('tv-show-title').textContent = tvshowDetails.name;
-        document.getElementById('tv-show-img').setAttribute('src', tvshowDetails.image.medium);
-        document.getElementById('summary').innerHTML = `${tvshowDetails.summary}`;
+        document
+          .getElementById('tv-show-img')
+          .setAttribute('src', tvshowDetails.image.medium);
+        document.getElementById(
+          'summary',
+        ).innerHTML = `${tvshowDetails.summary}`;
         const res = await showComments(event.target.id);
         const commentList = document.querySelector('.comment-list');
         let pElement = '';
