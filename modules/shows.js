@@ -68,7 +68,33 @@ const postLikes = async () => {
   const shows = await fetchShows(url).then((result) => result);
   const clickLikes = document.querySelectorAll('.heart');
   const likeObj = new LikeObj();
-  console.log(shows, clickLikes, likeObj);
+
+  if (shows.length !== 0) {
+    [...clickLikes].forEach((element) => {
+      element.addEventListener('click', (e) => {
+        likeObj.item_id = parseInt(e.target.getAttribute('data-id'), 10);
+        fetch(appIDLikes, {
+          method: 'POST',
+          body: JSON.stringify(likeObj),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+
+        const totalLikes = e.target.parentElement.nextElementSibling;
+        fetchLikes(appIDLikes)
+          .then((response) => response)
+          .then((response) => {
+            const keys = Object.keys(response);
+            keys.forEach((key) => {
+              if (response[key].item_id === likeObj.item_id) {
+                totalLikes.innerText = `${response[key].likes} Likes`;
+              }
+            });
+          });
+      });
+    });
+  }
 };
 
 const showDetails = async (id) => {
