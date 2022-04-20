@@ -11,10 +11,13 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "displayShows": () => (/* binding */ displayShows),
-/* harmony export */   "postLikes": () => (/* binding */ postLikes)
+/* harmony export */   "postLikes": () => (/* binding */ postLikes),
+/* harmony export */   "showComments": () => (/* binding */ showComments)
 /* harmony export */ });
-// const url = "https://api.tvmaze.com/shows/1/episodes";
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils.js */ "./modules/utils.js");
+
 const url = 'https://api.tvmaze.com/shows';
+
 
 const fetchShows = async (url) => {
   const response = await fetch(url);
@@ -37,7 +40,7 @@ const displayShows = async () => {
                     <i class="fa-regular fa-heart icon px-1"></i>
                 </div>
                 <p class="m-0 px-1 pt-0 pb-1 likes w-100">Likes</p>
-                <h6  class="mx-0 mt-0 mb-1 px-2 py-1 border text-center comment">Comments</h6>
+                <button type="button" id="${element.id}"  class="mx-0 mt-0 mb-1 px-2 py-1 border text-center comment">Comments</button>
                 </div>
             `;
       showList.insertAdjacentHTML('beforeend', showItem);
@@ -49,13 +52,44 @@ const postLikes = () => {
   console.log('this is function for likes');
 };
 
-// const openModal = () => {
-
+const showComments = async (id) =>{
+  try{
+    const url = _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl+ `apps/st5awnig42N9i1c9g8rb/comments?item_id=${id}`;
+    var requestOptions = { method: 'GET'};
+    
+    const response  = fetch(url, requestOptions)
+    if (response.ok){
+        const json =  await response.json()
+        return json.result;
+    }
+    else{throw new Error(`HTTP error: ${response.status}`);
+  }
+   
+  }
+  catch(e){
+    return _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].exception(e);
+  }
  
-// };
+}
 
 
 
+
+/***/ }),
+
+/***/ "./modules/utils.js":
+/*!**************************!*\
+  !*** ./modules/utils.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Utilities)
+/* harmony export */ });
+class Utilities {
+    static baseUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/'
+}
 
 /***/ }),
 
@@ -78,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nhtml {\n  font-family: \"Roboto\", serif;\n}\n\nbody {\n  background: white;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: normal;\n  line-height: 18px;\n  background-image: linear-gradient(to left, #2f4858, #33658a);\n}\n\n.logo {\n  padding: 19px;\n  border-radius: 100%;\n  border: 2px solid rgb(198, 192, 185);\n  text-align: center;\n  height: 70px;\n  width: 70px;\n  cursor: pointer;\n}\n\nheader {\n  top: 0;\n  padding: 70px 0 100px;\n  height: 80px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nnav {\n  width: 100%;\n}\n\nnav ul {\n  padding-top: 19px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n  height: inherit;\n}\n\nul li.active {\n  border-bottom: 2px solid grey;\n}\n\nul li {\n  list-style: none;\n  margin-right: 12px;\n  cursor: pointer;\n}\n\nul li:hover {\n  border-bottom: 2px solid grey;\n}\n\nfooter {\n  position: fixed !important;\n  color: white;\n  background: #2f4858;\n  font-size: 16px;\n  font-weight: 300;\n  left: 0 !important;\n  bottom: 0 !important;\n  width: 100%;\n  text-align: left;\n}\n\n.footer-text {\n  font-size: 12px !important;\n  font-family: roboto, serif;\n  color: white;\n  letter-spacing: 1px;\n  font-weight: 200 !important;\n  margin: 0;\n}\n\nimg {\n  width: 136px;\n  height: auto;\n}\n\n.icon {\n  font-size: 16px;\n  color: white;\n}\n\n.showItem {\n  background-color: #2f4858;\n}\n\n.name, .comment {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  inline-size: 110px;\n  overflow-wrap: break-word;\n}\n\n.comment {\n  cursor: pointer;\n}\n\n.likes {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  text-align: right;\n}\n\n/* modal */\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  padding-top: 100px;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.work-details-card-container {\n  background-color: #fff;\n  width: 80%;\n  margin: auto;\n  padding: 16px;\n  border: none;\n}\n\n.header-container {\n  margin: auto;\n  border: none;\n}\n\n.close {\n  color: #aaa;\n  font-size: 28px;\n  font-weight: bold;\n  margin-top: 12px;\n  margin-right: 10px;\n}\n\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modal-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  position: relative;\n  margin-top: 30px;\n}\n\n.work-details-tech-stack {\n  padding-right: 20px;\n  margin-left: 0;\n  height: 80px;\n}\n\n.work-details-items {\n  padding-left: 0;\n  margin-left: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: start;\n  align-content: center;\n}\n\n.work-details-items li {\n  margin-right: 12px;\n}\n\n.modal-header h2 {\n  left: 0;\n  top: 0;\n  color: #172b4d;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 32px;\n  margin-top: 9px;\n}\n\n.btn-tech-stacks {\n  padding: 12px;\n  font-weight: normal;\n  font-size: 17px;\n  line-height: 16px;\n}\n\n.modal-body {\n  margin: auto;\n}\n\n.project-details-description {\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n}\n\n.project-details-ul-items {\n  margin-left: 0;\n  padding-left: 0;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: start;\n}\n\n.project-details-ul-items li {\n  margin: 0;\n  padding: 0;\n  width: 50%;\n  font-style: normal;\n  font-weight: bold;\n  cursor: pointer;\n  margin-right: 12px;\n}\n\n.project-details-ul-items li a {\n  text-decoration-line: none;\n  font-style: normal;\n  font-weight: bold;\n  color: #fff;\n  font-size: 20px;\n  background-color: #ff6b00;\n  line-height: 24px;\n  padding: 12px 0 12px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n}\n\n.project-details-ul-items li a:hover {\n  color: #ff6b00;\n  background-color: #fff5e1;\n  border: 1px solid #ff6b00;\n}\n\n#project-image {\n  width: 50vw;\n  height: 60vh;\n}\n\n#recent-work-image,\n#project-image {\n  border: 1px solid #ff6b00;\n}", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AACF;;AAEA;EACE,4BAAA;AACF;;AAEA;EACE,iBAAA;EACA,yCAAA;EACA,eAAA;EACA,mBAAA;EACA,iBAAA;EACA,4DAAA;AACF;;AAEA;EACE,aAAA;EACA,mBAAA;EACA,oCAAA;EACA,kBAAA;EACA,YAAA;EACA,WAAA;EACA,eAAA;AACF;;AAEA;EACE,MAAA;EACA,qBAAA;EACA,YAAA;EACA,WAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;AACF;;AAEA;EACE,WAAA;AACF;;AAEA;EACE,iBAAA;EACA,aAAA;EACA,mBAAA;EACA,mBAAA;EACA,6BAAA;EACA,eAAA;AACF;;AAEA;EACE,6BAAA;AACF;;AAEA;EACE,gBAAA;EACA,kBAAA;EACA,eAAA;AACF;;AAEA;EACE,6BAAA;AACF;;AAEA;EACE,0BAAA;EACA,YAAA;EACA,mBAAA;EACA,eAAA;EACA,gBAAA;EACA,kBAAA;EACA,oBAAA;EACA,WAAA;EACA,gBAAA;AACF;;AAEA;EACE,0BAAA;EACA,0BAAA;EACA,YAAA;EACA,mBAAA;EACA,2BAAA;EACA,SAAA;AACF;;AAEA;EACE,YAAA;EACA,YAAA;AACF;;AAEA;EACE,eAAA;EACA,YAAA;AACF;;AAEA;EACE,yBAAA;AACF;;AAEA;EACE,eAAA;EACA,mBAAA;EACA,YAAA;EACA,kBAAA;EACA,yBAAA;AACF;;AAEA;EACE,eAAA;AACF;;AAEA;EACE,eAAA;EACA,mBAAA;EACA,YAAA;EACA,iBAAA;AACF;;AAGA,UAAA;AAEA;EACE,aAAA;EACA,eAAA;EACA,UAAA;EACA,kBAAA;EACA,OAAA;EACA,MAAA;EACA,WAAA;EACA,YAAA;EACA,cAAA;EACA,oCAAA;AADF;;AAIA;EACE,sBAAA;EACA,UAAA;EACA,YAAA;EACA,aAAA;EACA,YAAA;AADF;;AAIA;EACE,YAAA;EACA,YAAA;AADF;;AAIA;EACE,WAAA;EACA,eAAA;EACA,iBAAA;EACA,gBAAA;EACA,kBAAA;AADF;;AAIA;;EAEE,WAAA;EACA,qBAAA;EACA,eAAA;AADF;;AAIA;EACE,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,kBAAA;EACA,gBAAA;AADF;;AAIA;EACE,mBAAA;EACA,cAAA;EACA,YAAA;AADF;;AAIA;EACE,eAAA;EACA,cAAA;EACA,aAAA;EACA,mBAAA;EACA,kBAAA;EACA,qBAAA;AADF;;AAIA;EACE,kBAAA;AADF;;AAIA;EACE,OAAA;EACA,MAAA;EACA,cAAA;EACA,kBAAA;EACA,gBAAA;EACA,eAAA;EACA,eAAA;AADF;;AAIA;EACE,aAAA;EACA,mBAAA;EACA,eAAA;EACA,iBAAA;AADF;;AAIA;EACE,YAAA;AADF;;AAKA;EACE,kBAAA;EACA,mBAAA;EACA,eAAA;EACA,iBAAA;AAFF;;AAKA;EACE,cAAA;EACA,eAAA;EACA,aAAA;EACA,mBAAA;EACA,8BAAA;EACA,kBAAA;AAFF;;AAKA;EACE,SAAA;EACA,UAAA;EACA,UAAA;EACA,kBAAA;EACA,iBAAA;EACA,eAAA;EACA,kBAAA;AAFF;;AAKA;EACE,0BAAA;EACA,kBAAA;EACA,iBAAA;EACA,WAAA;EACA,eAAA;EACA,yBAAA;EACA,iBAAA;EACA,oBAAA;EACA,aAAA;EACA,mBAAA;EACA,6BAAA;AAFF;;AAKA;EACE,cAAA;EACA,yBAAA;EACA,yBAAA;AAFF;;AAKA;EACE,WAAA;EACA,YAAA;AAFF;;AAKA;;EAEE,yBAAA;AAFF","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nhtml {\n  font-family: \"Roboto\", serif;\n}\n\nbody {\n  background: white;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: normal;\n  line-height: 18px;\n  background-image: linear-gradient(to left, #2f4858, #33658a);\n}\n\n.logo {\n  padding: 19px;\n  border-radius: 100%;\n  border: 2px solid rgb(198, 192, 185);\n  text-align: center;\n  height: 70px;\n  width: 70px;\n  cursor: pointer;\n}\n\nheader {\n  top: 0;\n  padding: 70px 0 100px;\n  height: 80px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nnav {\n  width: 100%;\n}\n\nnav ul {\n  padding-top: 19px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n  height: inherit;\n}\n\nul li.active {\n  border-bottom: 2px solid grey;\n}\n\nul li {\n  list-style: none;\n  margin-right: 12px;\n  cursor: pointer;\n}\n\nul li:hover {\n  border-bottom: 2px solid grey;\n}\n\nfooter {\n  position: fixed !important;\n  color: white;\n  background: #2f4858;\n  font-size: 16px;\n  font-weight: 300;\n  left: 0 !important;\n  bottom: 0 !important;\n  width: 100%;\n  text-align: left;\n}\n\n.footer-text {\n  font-size: 12px !important;\n  font-family: roboto, serif;\n  color: white;\n  letter-spacing: 1px;\n  font-weight: 200 !important;\n  margin: 0;\n}\n\nimg {\n  width: 136px;\n  height: auto;\n}\n\n.icon {\n  font-size: 16px;\n  color: white;\n}\n\n.showItem {\n  background-color: #2f4858;\n}\n\n.name, .comment {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  inline-size: 110px;\n  overflow-wrap: break-word;\n  \n}\n.comment {\n  cursor: pointer;\n}\n\n.likes {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  text-align: right;\n}\n\n\n/* modal */\n\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  padding-top: 100px;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgba(0, 0, 0, 0.4);\n}\n\n.work-details-card-container {\n  background-color: #fff;\n  width: 80%;\n  margin: auto;\n  padding: 16px;\n  border: none;\n}\n\n.header-container {\n  margin: auto;\n  border: none;\n}\n\n.close {\n  color: #aaa;\n  font-size: 28px;\n  font-weight: bold;\n  margin-top: 12px;\n  margin-right: 10px;\n}\n\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modal-header {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  position: relative;\n  margin-top: 30px;\n}\n\n.work-details-tech-stack {\n  padding-right: 20px;\n  margin-left: 0;\n  height: 80px;\n}\n\n.work-details-items {\n  padding-left: 0;\n  margin-left: 0;\n  display: flex;\n  flex-direction: row;\n  align-items: start;\n  align-content: center;\n}\n\n.work-details-items li {\n  margin-right: 12px;\n}\n\n.modal-header h2 {\n  left: 0;\n  top: 0;\n  color: #172b4d;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 32px;\n  margin-top: 9px;\n}\n\n.btn-tech-stacks {\n  padding: 12px;\n  font-weight: normal;\n  font-size: 17px;\n  line-height: 16px;\n}\n\n.modal-body {\n  margin: auto;\n}\n\n\n.project-details-description {\n  font-style: normal;\n  font-weight: normal;\n  font-size: 16px;\n  line-height: 24px;\n}\n\n.project-details-ul-items {\n  margin-left: 0;\n  padding-left: 0;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: start;\n}\n\n.project-details-ul-items li {\n  margin: 0;\n  padding: 0;\n  width: calc(100% / 2);\n  font-style: normal;\n  font-weight: bold;\n  cursor: pointer;\n  margin-right: 12px;\n}\n\n.project-details-ul-items li a {\n  text-decoration-line: none;\n  font-style: normal;\n  font-weight: bold;\n  color: #fff;\n  font-size: 20px;\n  background-color: #ff6b00;\n  line-height: 24px;\n  padding: 12px 0 12px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n}\n\n.project-details-ul-items li a:hover {\n  color: #ff6b00;\n  background-color: #fff5e1;\n  border: 1px solid #ff6b00;\n}\n\n#project-image {\n  width: 50vw;\n  height: 60vh;\n}\n\n#recent-work-image,\n#project-image {\n  border: 1px solid #ff6b00;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nh3 {\n  font-size: 24px;\n  text-align: center;\n  margin: 2px 0 2px;\n}\n\nhtml {\n  font-family: \"Roboto\", serif;\n}\n\nbody {\n  background: white;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: normal;\n  line-height: 18px;\n  background-image: linear-gradient(to left, #2f4858, #33658a);\n}\n\n.logo {\n  padding: 19px;\n  border-radius: 100%;\n  border: 2px solid rgb(198, 192, 185);\n  text-align: center;\n  height: 70px;\n  width: 70px;\n  cursor: pointer;\n}\n\nheader {\n  top: 0;\n  padding: 70px 0 100px;\n  height: 80px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nnav {\n  width: 100%;\n}\n\nnav ul {\n  padding-top: 19px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n  height: inherit;\n}\n\nul li.active {\n  border-bottom: 2px solid grey;\n}\n\nul li {\n  list-style: none;\n  margin-right: 12px;\n  cursor: pointer;\n}\n\nfooter {\n  position: fixed !important;\n  color: white;\n  background: #2f4858;\n  font-size: 16px;\n  font-weight: 300;\n  left: 0 !important;\n  bottom: 0 !important;\n  width: 100%;\n  text-align: left;\n}\n\n.footer-text {\n  font-size: 12px !important;\n  font-family: roboto, serif;\n  color: white;\n  letter-spacing: 1px;\n  font-weight: 200 !important;\n  margin: 0;\n}\n\nimg {\n  width: 136px;\n  height: auto;\n}\n\n.icon {\n  font-size: 16px;\n  color: white;\n}\n\n.showItem {\n  background-color: #2f4858;\n}\n\n.name,\n.comment {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  inline-size: 110px;\n  overflow-wrap: break-word;\n}\n\n.comment {\n  cursor: pointer;\n  background-color: transparent;\n}\n\n.likes {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  text-align: right;\n}\n\n/* modal */\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  padding-top: 20px;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgba(0, 0, 0, 0.4);\n  padding-bottom: 100px;\n}\n\n.card-container {\n  background-color: #fff;\n  width: 40%;\n  height: 100vh;\n  margin: auto;\n  /* padding: 16px; */\n  border: none;\n}\n\n.header-container {\n  margin: auto;\n  border: none;\n}\n\n.close {\n  color: #aaa;\n  font-size: 28px;\n  font-weight: bold;\n  /* margin-top: 12px; */\n  margin-right: 10px;\n}\n\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modal-header {\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n  /* margin-top: 20px; */\n}\n\n.modal-body {\n  width: 100%;\n  background-color: #fff;\n  margin: auto;\n}\n\n.image-container {\n  margin: auto;\n  padding: 0;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.content {\n  display: flex;\n  flex-direction: column;\n}\n\n.modal-body img {\n  text-align: center;\n  width: 60%;\n  height: 10%;\n}\n\nul.comment-list {\n  width: 100%;\n}\n\nul.comment-list li {\n  border: 1px solid rgb(249, 246, 246);\n  margin-top: 12px;\n  padding: 12px;\n}\n\nul.menu li:hover {\n  border-bottom: 2px solid grey;\n}\n\nul.comment-list li:hover {\n  text-decoration: none;\n}\n\n.form-container {\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n\nform {\n  display: flex;\n  flex-direction: column;\n}\n\nform button,\ntextarea,\ninput[type=text] {\n  margin-bottom: 24px;\n  padding: 10px;\n}\n\n@media screen and (min-width: 1024px) and (max-height: 600px) {\n  .card-container {\n    background-color: #fff;\n    width: 60%;\n    height: 100vh;\n    margin: auto;\n    /* padding: 16px; */\n    border: none;\n  }\n\n  h3 {\n    font-size: 17px;\n    margin: 8px 0 8px;\n  }\n\n  .modal-body img {\n    width: 50%;\n    padding-top: 0;\n    height: 5%;\n  }\n\n  ul.comment-list li {\n    border: 1px solid rgb(249, 246, 246);\n    margin-top: 4px;\n    padding: 7px;\n  }\n\n  .content {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n  }\n\n  .form-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n  }\n}", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"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","sourcesContent":["* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nh3 {\n  font-size: 24px;\n  text-align: center;\n  margin: 2px 0  2px;\n}\n\nhtml {\n  font-family: \"Roboto\", serif;\n}\n\nbody {\n  background: white;\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: normal;\n  line-height: 18px;\n  background-image: linear-gradient(to left, #2f4858, #33658a);\n}\n\n.logo {\n  padding: 19px;\n  border-radius: 100%;\n  border: 2px solid rgb(198, 192, 185);\n  text-align: center;\n  height: 70px;\n  width: 70px;\n  cursor: pointer;\n}\n\nheader {\n  top: 0;\n  padding: 70px 0 100px;\n  height: 80px;\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n}\n\nnav {\n  width: 100%;\n}\n\nnav ul {\n  padding-top: 19px;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  justify-content: space-around;\n  height: inherit;\n}\n\nul li.active {\n  border-bottom: 2px solid grey;\n}\n\nul li {\n  list-style: none;\n  margin-right: 12px;\n  cursor: pointer;\n}\n\nfooter {\n  position: fixed !important;\n  color: white;\n  background: #2f4858;\n  font-size: 16px;\n  font-weight: 300;\n  left: 0 !important;\n  bottom: 0 !important;\n  width: 100%;\n  text-align: left;\n}\n\n.footer-text {\n  font-size: 12px !important;\n  font-family: roboto, serif;\n  color: white;\n  letter-spacing: 1px;\n  font-weight: 200 !important;\n  margin: 0;\n}\n\nimg {\n  width: 136px;\n  height: auto;\n}\n\n.icon {\n  font-size: 16px;\n  color: white;\n}\n\n.showItem {\n  background-color: #2f4858;\n}\n\n.name,\n.comment {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  inline-size: 110px;\n  overflow-wrap: break-word;\n}\n\n.comment {\n  cursor: pointer;\n  background-color: transparent;\n}\n\n.likes {\n  font-size: 12px;\n  font-weight: normal;\n  color: white;\n  text-align: right;\n}\n\n/* modal */\n.modal {\n  display: none;\n  position: fixed;\n  z-index: 1;\n  padding-top: 20px;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background-color: rgba(0, 0, 0, 0.4);\n  padding-bottom: 100px;\n}\n\n.card-container {\n  background-color: #fff;\n  width: 40%;\n  height: 100vh;\n  margin: auto;\n\n  /* padding: 16px; */\n  border: none;\n}\n\n.header-container {\n  margin: auto;\n  border: none;\n}\n\n.close {\n  color: #aaa;\n  font-size: 28px;\n  font-weight: bold;\n\n  /* margin-top: 12px; */\n  margin-right: 10px;\n}\n\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n}\n\n.modal-header {\n  display: flex;\n  justify-content: flex-end;\n  position: relative;\n\n  /* margin-top: 20px; */\n}\n\n.modal-body {\n  width: 100%;\n  background-color: #fff;\n  margin: auto;\n}\n\n.image-container {\n  margin: auto;\n  padding: 0;\n  width: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.content {\n  display: flex;\n  flex-direction: column;\n}\n\n.modal-body img {\n  text-align: center;\n  width: 60%;\n  height: 10%;\n}\n\nul.comment-list {\n  width: 100%;\n}\n\nul.comment-list li {\n  border: 1px solid rgb(249, 246, 246);\n  margin-top: 12px;\n  padding: 12px;\n}\n\nul.menu li:hover {\n  border-bottom: 2px solid grey;\n}\n\nul.comment-list li:hover {\n  text-decoration: none;\n}\n\n.form-container {\n  padding: 0;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n\nform {\n  display: flex;\n  flex-direction: column;\n}\n\nform button,\ntextarea,\ninput[type=text] {\n  margin-bottom: 24px;\n  padding: 10px;\n}\n\n@media screen and (min-width: 1024px) and (max-height: 600px) {\n  .card-container {\n    background-color: #fff;\n    width: 60%;\n    height: 100vh;\n    margin: auto;\n\n    /* padding: 16px; */\n    border: none;\n  }\n\n  h3 {\n    font-size: 17px;\n    margin: 8px 0  8px;\n  }\n\n  .modal-body img {\n    width: 50%;\n    padding-top: 0;\n    height: 5%;\n  }\n\n  ul.comment-list li {\n    border: 1px solid rgb(249, 246, 246);\n    margin-top: 4px;\n    padding: 7px;\n  }\n\n  .content {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n  }\n\n  .form-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -663,26 +697,39 @@ var __webpack_exports__ = {};
   \**********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.css */ "./src/index.css");
-/* harmony import */ var _modules_shows__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/shows */ "./modules/shows.js");
-
-
-// import openModal from '../modules/shows';
+/* harmony import */ var _modules_shows_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../modules/shows.js */ "./modules/shows.js");
 
 
 
-(0,_modules_shows__WEBPACK_IMPORTED_MODULE_1__.displayShows)();
+(0,_modules_shows_js__WEBPACK_IMPORTED_MODULE_1__.displayShows)();
+
 const modal = document.querySelector('#item-modal');
-document.querySelectorAll('.comment').forEach( (modalBtn) => {
-    modalBtn.addEventListener('click', (event)=> {
-        modal.style.display="block";
-        console.log('click')
+
+window.addEventListener('load', () => {
+  const btns = [...document.querySelectorAll('.comment')];
+  btns.forEach((modalBtn) => {
+    modalBtn.addEventListener('click', async (event) => {
+    console.log(event.target.id)
+        if(event.target.id!== null) {
+            modal.style.display = 'block';
+            await (0,_modules_shows_js__WEBPACK_IMPORTED_MODULE_1__.showComments)(event.target.id);
+        }
+        
     });
-    
+  });
 });
 
+window.onclick = (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+};
 
+document.getElementsByClassName('close')[0].onclick = () => {
+  modal.style.display = 'none';
+};
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle698bc2cf229a61d40c82.js.map
+//# sourceMappingURL=bundlea31801270bd1418c8139.js.map

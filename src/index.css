@@ -251,8 +251,8 @@ input[type=text] {
   }
 
   h3 {
-    font-size: 17px;
-    margin: 8px 0  8px;
+    font-size: 16px;
+    margin: 10px 0 10px;
   }
 
   .modal-body img {
@@ -278,3 +278,4 @@ input[type=text] {
     justify-content: space-between;
   }
 }
+
