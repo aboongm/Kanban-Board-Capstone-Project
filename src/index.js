@@ -3,11 +3,11 @@ import {
   displayShows,
   updateLikes,
   postLikes,
-  showComments,
   showDetails,
   createShowComment,
+  displayShowComment,
 } from '../modules/shows.js';
-import Utilities from '../modules/utils';
+import Utilities from '../modules/utils.js';
 
 const render = async () => {
   displayShows();
@@ -27,8 +27,8 @@ window.addEventListener('click', () => {
         // show modal
         modal.style.display = 'block';
 
-        //==== show tv show details====
-        const tvshowDetails = await showDetails(event.target.id)
+        //= === show tv show details====
+        const tvshowDetails = await showDetails(event.target.id);
         document.getElementById('tv-show-title').textContent = tvshowDetails.name;
         document
           .getElementById('tv-show-img')
@@ -46,19 +46,7 @@ window.addEventListener('click', () => {
           pElement += `<p>${item}</p>`;
         });
         genres.innerHTML = pElement;
-
-        //==== show comment=====
-        const res = await showComments(event.target.id);
-        const commentList = document.querySelector('.comment-list');
-        commentList.innerHTML = '';
-        let liElement = '';
-        res.forEach((result) => {
-          if (result === null) {
-            liElement += ' <li>No comments for now</li>';
-          }
-          liElement += ` <li>${result.creation_date} ${result.username} ${result.comment}</li>`;
-        });
-        commentList.innerHTML = liElement;
+        await displayShowComment(event.target.id);
       }
     });
   });
@@ -87,6 +75,7 @@ document.getElementById('add-comment').addEventListener('click', async () => {
     Utilities.cleanFormInput();
     sms.style.color = 'green';
     sms.textContent = '-Done';
+    await displayShowComment(id);
   } else {
     sms.style.display = 'block';
     sms.style.color = 'red';

@@ -142,12 +142,27 @@ const createShowComment = async (id, username, comment) => {
   }
 };
 
+const displayShowComment = async (id) => {
+  //= === show comment=====
+  const res = await showComments(id);
+  const commentList = document.querySelector('.comment-list');
+  commentList.innerHTML = '';
+  let liElement = '';
+  res.forEach((result) => {
+    if (result === null) {
+      liElement += ' <li>No comments for now</li>';
+    }
+    liElement += ` <li>${result.creation_date} ${result.username} ${result.comment}</li>`;
+  });
+  commentList.innerHTML = liElement;
+};
+
 export {
   fetchShows,
   displayShows,
   updateLikes,
   postLikes,
-  showComments,
   showDetails,
   createShowComment,
+  displayShowComment,
 };
