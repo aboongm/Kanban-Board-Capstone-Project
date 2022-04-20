@@ -125,6 +125,23 @@ const showComments = async (id) => {
   }
 };
 
+const createShowComment = async (id, username, comment) => {
+  try {
+    const requestOptions = {
+      method: 'POST',
+      headers: Utilities.getHeader(),
+      body: Utilities.getParams(id, username, comment),
+    };
+    const response = await fetch(`${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/comments`, requestOptions);
+    if (response.ok) {
+      return await response.json();
+    }
+    throw new Error(`HTTP error: ${response.status}`);
+  } catch (e) {
+    return Utilities.exception(e);
+  }
+};
+
 export {
   fetchShows,
   displayShows,
@@ -132,4 +149,5 @@ export {
   postLikes,
   showComments,
   showDetails,
+  createShowComment,
 };

@@ -5,7 +5,9 @@ import {
   postLikes,
   showComments,
   showDetails,
+  createShowComment,
 } from '../modules/shows.js';
+import Utilities from '../modules/utils';
 
 const render = async () => {
   displayShows();
@@ -33,9 +35,12 @@ window.addEventListener('click', () => {
         document
           .getElementById('tv-show-img')
           .setAttribute('src', tvshowDetails.image.medium);
+        document.getElementById('show-id').setAttribute('data-id', event.target.id);
         document.getElementById(
           'summary',
         ).innerHTML = `${tvshowDetails.summary}`;
+
+        // list comment
         const res = await showComments(event.target.id);
         const commentList = document.querySelector('.comment-list');
         let pElement = '';
@@ -67,3 +72,23 @@ window.onclick = (event) => {
 document.getElementsByClassName('close')[0].onclick = () => {
   modal.style.display = 'none';
 };
+
+// add comment
+document.getElementById('add-comment').addEventListener('click', async () => {
+  const id = document.getElementById('show-id').getAttribute('data-id');
+  const username = document.getElementById('name').value;
+  const comment = document.getElementById('insights').value;
+  const sms = document.getElementById('message');
+
+  if (username !== '' && id !== '' && comment !== '') {
+    sms.style.display = 'block';
+    createShowComment(id, username, comment);
+    Utilities.cleanFormInput();
+    sms.style.color = 'green';
+    sms.textContent = '-Done';
+  } else {
+    sms.style.display = 'block';
+    sms.style.color = 'red';
+    sms.textContent = '-Fields required';
+  }
+});
