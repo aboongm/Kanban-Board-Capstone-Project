@@ -1,7 +1,13 @@
 import './index.css';
-import { displayShows } from '../modules/shows.js';
+import { displayShows, updateLikes, postLikes } from '../modules/shows.js';
 
-displayShows();
+const render = async () => {
+  displayShows();
+  updateLikes();
+  postLikes();
+};
+
+render();
 
 const modal = document.querySelector('#item-modal');
 
