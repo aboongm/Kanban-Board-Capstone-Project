@@ -177,10 +177,11 @@ img {
 
 .modal-header {
   display: flex;
+  top: 0;
   justify-content: flex-end;
   position: relative;
-
-  /* margin-top: 20px; */
+  margin-top: 0;
+  padding: 3px;
 }
 
 .modal-body {
@@ -246,6 +247,12 @@ input[type=text] {
   padding: 10px;
 }
 
+.genres {
+  display: flex;
+  justify-content: space-around;
+  height: 20px;
+}
+
 @media screen and (min-width: 1024px) and (max-height: 600px) {
   .card-container {
     background-color: #fff;
@@ -258,8 +265,8 @@ input[type=text] {
   }
 
   h3 {
-    font-size: 17px;
-    margin: 8px 0  8px;
+    font-size: 16px;
+    margin: 10px 0 10px;
   }
 
   .modal-body img {

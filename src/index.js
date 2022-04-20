@@ -1,5 +1,11 @@
 import './index.css';
-import { displayShows, updateLikes, postLikes } from '../modules/shows.js';
+import {
+  displayShows,
+  updateLikes,
+  postLikes,
+  showComments,
+  showDetails,
+} from '../modules/shows.js';
 
 const render = async () => {
   displayShows();
@@ -11,11 +17,43 @@ render();
 
 const modal = document.querySelector('#item-modal');
 
-window.addEventListener('load', () => {
+window.addEventListener('click', () => {
   const btns = [...document.querySelectorAll('.comment')];
   btns.forEach((modalBtn) => {
-    modalBtn.addEventListener('click', () => {
-      modal.style.display = 'block';
+    modalBtn.addEventListener('click', async (event) => {
+      if (event.target.id !== null) {
+        // show modal
+        modal.style.display = 'block';
+
+        // show tv shows
+        const tvshowDetails = await showDetails(event.target.id);
+        const genres = document.getElementById('genres');
+        genres.innerHTML = '';
+        document.getElementById('tv-show-title').textContent = tvshowDetails.name;
+        document
+          .getElementById('tv-show-img')
+          .setAttribute('src', tvshowDetails.image.medium);
+        document.getElementById(
+          'summary',
+        ).innerHTML = `${tvshowDetails.summary}`;
+        const res = await showComments(event.target.id);
+        const commentList = document.querySelector('.comment-list');
+        let pElement = '';
+        tvshowDetails.genres.forEach((item) => {
+          pElement += `<p>${item}</p>`;
+        });
+        genres.innerHTML = pElement;
+
+        commentList.innerHTML = '';
+        let liElement = '';
+        res.forEach((result) => {
+          if (result === null) {
+            liElement += ' <li>No comments for now</li>';
+          }
+          liElement += ` <li>${result.creation_date} ${result.username} ${result.comment}</li>`;
+        });
+        commentList.innerHTML = liElement;
+      }
     });
   });
 });
