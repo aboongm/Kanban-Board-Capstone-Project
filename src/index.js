@@ -19,13 +19,19 @@ window.addEventListener('load', () => {
 
         // show tv shows
         const tvshowDetails = await showDetails(event.target.id);
+        const genres = document.getElementById('genres');
+        genres.innerHTML = '';
         document.getElementById('tv-show-title').textContent = tvshowDetails.name;
         document.getElementById('tv-show-img').setAttribute('src', tvshowDetails.image.medium);
-        document.getElementById('type').textContent = tvshowDetails.type;
-        document.getElementById('lang').textContent = tvshowDetails.language;
-
+        document.getElementById('summary').innerHTML = `${tvshowDetails.summary}`;
         const res = await showComments(event.target.id);
         const commentList = document.querySelector('.comment-list');
+        let pElement = '';
+        tvshowDetails.genres.forEach((item) => {
+          pElement += `<p>${item}</p>`;
+        });
+        genres.innerHTML = pElement;
+
         commentList.innerHTML = '';
         let liElement = '';
         res.forEach((result) => {
