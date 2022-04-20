@@ -28,7 +28,7 @@
     <header>
       <div class="logo text-white">Logo</div>
       <nav>
-        <ul>
+        <ul class="menu">
           <li class="menu-item active text-white">Tv Shows(59)</li>
           <li class="menu-item text-white">Schedule</li>
           <li class="menu-item text-white">Episodes</li>
@@ -45,11 +45,55 @@
       </div>
     </footer>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="./index.js"></script>
+<!-- modal -->
+    <div id="item-modal" class="modal">
+      <div class="card-container">
+        <div class="header-container">
+            <div class="modal-header">
+              <span class="close">&times;</span>
+            </div> 
+        </div>
+        <div class="modal-body">
+          <div class="image-container">
+            <img id="tv-show-img" src="https://catholicreview.org/wp-content/uploads/2021/07/20210623T1100-MOVIE-REVIEW-F9-FAST-SAGA-1250672.jpg" alt="modal image">
+          </div>
+          <h3 id="tv-show-title">Title</h3>
+          <h3>Genres</h3>
+          <div  class="genres" id="genres">
+          
+          </div>
+           <h3>Summary</h3>
+           <div id="summary">
+
+           </div>
+           
+          
+          
+           <div class="content">
+              <div class="commet-list-container">
+                <h3>Comments</h3>
+              <ul class="comment-list">
+               
+              </ul>
+            </div>
+              <div class="form-container">
+                <h3>Add comment</h3>
+                <form action="#">
+                  <input type="text" name="name" id="name" placeholder="You name">
+                  <textarea id="insights" name="insights" rows="4" cols="50" placeholder="Your insights"></textarea>
+                  <button type="button" id='add-comment' >Comment</button>
+                </form>
+              </div>
+          </div>
+        </div>
+  </div>
+  </div>
+
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"
+></script>
+<script src="./index.js"></script>
   </body>
 </html>
