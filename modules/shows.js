@@ -34,7 +34,7 @@ const displayShows = async () => {
     shows.forEach((element, index) => {
       const showItem = `
             <div class="showItem mx-5 my-2 d-flex flex-column align-items-center justify-content-center">
-                <img src="${element.image.medium}" alt="show">
+                <img src="${element.image.medium}" class=" flex-sm" alt="show">
                 <div class="d-flex align-items-center justify-content-between w-100">
                     <h6 class="m-0 px-1 py-2 name">${element.name}</h6>
                     <i data-id=${index} class="heart fa-solid fa-heart icon px-1"></i>

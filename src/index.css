@@ -320,14 +320,13 @@ input[type="text"] {
     flex: 1 !important;
   }
 
-  .container{
+  .container {
     margin: 0 !important;
     padding: 0 !important;
   }
 
   .showItem {
     max-width: 100% !important;
-    border: 2px solid white;
     margin: 20px 40px !important;
   }
 
