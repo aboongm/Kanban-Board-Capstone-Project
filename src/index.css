@@ -307,3 +307,41 @@ input[type="text"] {
     justify-content: space-between;
   }
 }
+
+@media screen and (max-width: 504px) {
+  .tvshow-list {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .flex-sm {
+    width: 100%;
+    flex: 1 !important;
+  }
+
+  .container {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .showItem {
+    max-width: 100% !important;
+    margin: 20px 40px !important;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-left: 30px;
+  }
+}
