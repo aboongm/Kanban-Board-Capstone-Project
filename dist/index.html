@@ -23,13 +23,13 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
     />
     <link rel="stylesheet" href="./index.css" />
-  <script defer src="bundle172ecb96258c0a47c8c9.js"></script></head>
+  <script defer src="bundle1dcdf805819305c0dc28.js"></script></head>
   <body class="container">
     <header>
-      <div class="logo text-white">Logo</div>
+      <div class="logo text-white"></div>
       <nav>
         <ul class="menu">
-          <li class="menu-item active text-white">Tv Shows(249)</li>
+          <li class="menu-item active text-white item-counter">Tv Shows(59)</li>
           <li class="menu-item text-white">Schedule</li>
           <li class="menu-item text-white">Episodes</li>
           <li class="menu-item text-white">People</li>
@@ -57,6 +57,7 @@
           <div class="image-container">
             <img id="tv-show-img" src="https://catholicreview.org/wp-content/uploads/2021/07/20210623T1100-MOVIE-REVIEW-F9-FAST-SAGA-1250672.jpg" alt="modal image">
           </div>
+          <span data-id = '' id ='show-id'></span>
           <h3 id="tv-show-title">Title</h3>
           <h3>Genres</h3>
           <div  class="genres" id="genres">
@@ -66,9 +67,6 @@
            <div id="summary">
 
            </div>
-           
-          
-          
            <div class="content">
               <div class="commet-list-container">
                 <h3>Comments</h3>
@@ -77,7 +75,7 @@
               </ul>
             </div>
               <div class="form-container">
-                <h3>Add comment</h3>
+                <h3 class ='d-flex w-100 justify-content-center'>Add comment <small id="message"></small></h3>
                 <form action="#">
                   <input type="text" name="name" id="name" placeholder="You name">
                   <textarea id="insights" name="insights" rows="4" cols="50" placeholder="Your insights"></textarea>

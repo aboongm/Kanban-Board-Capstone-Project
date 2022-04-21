@@ -1,6 +1,6 @@
 import Utilities from './utils.js';
 import LikeObj from './apiObject.js';
-import itemCounter from './counter.js';
+import displayItemCounted from './counter.js';
 
 const url = 'https://api.tvmaze.com/shows';
 const appIDLikes = `${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/likes`;
@@ -38,7 +38,7 @@ const displayShows = async () => {
       showList.insertAdjacentHTML('beforeend', showItem);
     });
   }
-  itemCounter(shows);
+  displayItemCounted(shows);
 };
 
 const updateLikes = async () => {

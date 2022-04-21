@@ -82,9 +82,13 @@ footer {
   font-size: 12px !important;
   font-family: roboto, serif;
   color: white;
-  letter-spacing: 1px;
   font-weight: 200 !important;
   margin: 0;
+}
+
+.menu-item {
+  font-family: roboto, serif;
+  color: white;
 }
 
 img {
