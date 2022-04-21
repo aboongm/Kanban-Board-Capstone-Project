@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve --open",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
