@@ -187,7 +187,7 @@ img {
   justify-content: flex-end;
   position: relative;
   margin-top: 0;
-  padding: 3px;
+  padding: 10px;
 }
 
 .modal-body {
@@ -197,9 +197,8 @@ img {
 }
 
 .image-container {
-  margin: 0 auto;
   padding: 0;
-  width: 400px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -343,5 +342,14 @@ input[type="text"] {
 
   .logo {
     margin-left: 30px;
+  }
+
+  .card-container {
+    width: 90%;
+  }
+
+  .modal-body img {
+    margin-left: 0;
+    width: 80%;
   }
 }
