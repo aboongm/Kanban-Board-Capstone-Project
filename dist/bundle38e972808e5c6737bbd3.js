@@ -70,15 +70,23 @@ const url = 'https://api.tvmaze.com/shows';
 const appIDLikes = `${_utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].baseUrl}apps/st5awnig42N9i1c9g8rb/likes`;
 
 const fetchShows = async () => {
-  const response = await fetch(url);
-  const result = response.json();
-  return result;
+  try {
+    const response = await fetch(url);
+    if (response.ok) return await response.json();
+    throw new Error(`HTTP error: ${response.status}`);
+  } catch (e) {
+    return _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].exception(e);
+  } 
 };
 
 const fetchLikes = async (appIDLikes) => {
-  const response = await fetch(appIDLikes);
-  const result = response.json();
-  return result;
+  try {
+    const response = await fetch(appIDLikes);
+    if (response.ok) return await response.json();
+    throw new Error(`HTTP error: ${response.status}`);
+  } catch (e) {
+    return _utils_js__WEBPACK_IMPORTED_MODULE_0__["default"].exception(e)
+  }
 };
 
 const displayShows = async () => {
@@ -102,7 +110,7 @@ const displayShows = async () => {
       showList.insertAdjacentHTML('beforeend', showItem);
     });
   }
-  displayItemCounted(shows);
+  (0,_counter_js__WEBPACK_IMPORTED_MODULE_2__["default"])(shows);
 };
 
 const updateLikes = async () => {
@@ -1068,4 +1076,4 @@ document.getElementById('add-comment').addEventListener('click', async () => {
 
 /******/ })()
 ;
-//# sourceMappingURL=bundle1dcdf805819305c0dc28.js.map
+//# sourceMappingURL=bundle38e972808e5c6737bbd3.js.map

@@ -1,20 +1,28 @@
 import Utilities from './utils.js';
 import LikeObj from './apiObject.js';
-import displayItemCounted from './counter.js';
+import { displayItemCounted } from './counter.js';
 
 const url = 'https://api.tvmaze.com/shows';
 const appIDLikes = `${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/likes`;
 
 const fetchShows = async () => {
-  const response = await fetch(url);
-  const result = response.json();
-  return result;
+  try {
+    const response = await fetch(url);
+    if (response.ok) return await response.json();
+    throw new Error(`HTTP error: ${response.status}`);
+  } catch (e) {
+    return Utilities.exception(e);
+  }
 };
 
 const fetchLikes = async (appIDLikes) => {
-  const response = await fetch(appIDLikes);
-  const result = response.json();
-  return result;
+  try {
+    const response = await fetch(appIDLikes);
+    if (response.ok) return await response.json();
+    throw new Error(`HTTP error: ${response.status}`);
+  } catch (e) {
+    return Utilities.exception(e);
+  }
 };
 
 const displayShows = async () => {
@@ -118,10 +126,11 @@ const showComments = async (id) => {
     const url = `${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/comments?item_id=${id}`;
     const requestOptions = { method: 'GET' };
     const response = await fetch(url, requestOptions);
-    if (response.ok) {
+    if (response.ok && response.status !== 400) {
       return await response.json();
     }
-    throw new Error(`HTTP error: ${response.status}`);
+
+    return [];
   } catch (e) {
     return Utilities.exception(e);
   }
@@ -134,7 +143,10 @@ const createShowComment = async (id, username, comment) => {
       headers: Utilities.getHeader(),
       body: Utilities.getParams(id, username, comment),
     };
-    const response = await fetch(`${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/comments`, requestOptions);
+    const response = await fetch(
+      `${Utilities.baseUrl}apps/st5awnig42N9i1c9g8rb/comments`,
+      requestOptions,
+    );
     if (response.ok) {
       return await response.json();
     }
@@ -147,6 +159,10 @@ const createShowComment = async (id, username, comment) => {
 const displayShowComment = async (id) => {
   //= === show comment=====
   const res = await showComments(id);
+  // console.log(res)
+  document.getElementById(
+    'no-of-comments',
+  ).textContent = `(${Utilities.showCommentCounter(res)})`;
   const commentList = document.querySelector('.comment-list');
   commentList.innerHTML = '';
   let liElement = '';
