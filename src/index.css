@@ -7,7 +7,7 @@
 h3 {
   font-size: 24px;
   text-align: center;
-  margin: 2px 0  2px;
+  margin: 2px 0 2px;
 }
 
 html {
@@ -25,12 +25,14 @@ body {
 
 .logo {
   padding: 14px 0;
-  border-radius: 100%;
-  border: 2px solid rgb(198, 192, 185);
   text-align: center;
-  height: 54px;
-  width: 54px;
+  height: 70px;
+  width: 70px;
   cursor: pointer;
+  background-image: url("../asset/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80px 80px;
 }
 
 header {
@@ -242,7 +244,7 @@ form {
 
 form button,
 textarea,
-input[type=text] {
+input[type="text"] {
   margin-bottom: 24px;
   padding: 10px;
 }
