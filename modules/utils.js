@@ -23,4 +23,11 @@ export default class Utilities {
         document.getElementById('name').value = '';
         document.getElementById('insights').value = '';
       }
+
+    static showCommentCounter = (commentList) => {
+      if (commentList.length === 0) {
+        return 0;
+      }
+      return commentList.length;
+    }
 }
