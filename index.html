@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="title" property="og:title" content="Movie List" />
+    <meta
+      name="image"
+      property="og:image"
+      content="https://user-images.githubusercontent.com/49184579/169443806-e68d7c36-0ce6-4a88-b3d6-21094ddb6cde.png"
+    />
+    <meta
+      name="description"
+      property="og:description"
+      content="This is a TV Shows web site source from TVmaze API. In the website, a user can click on heart icon and get it recorded in Involvement API. Similarly, a user can write comment and get it recorded in Involvement API."
+    />
+    <meta
+      name="author"
+      content="Mayengbam Ranjit Luwang & Jenadius Nicholaus"
+    />
     <title>Kanban Board Capstone Project : TV Shows Website</title>
     <link
       rel="stylesheet"
@@ -23,20 +38,22 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
     />
     <link rel="stylesheet" href="./index.css" />
-  <script defer src="bundle43d226557fc5a430d7b6.js"></script></head>
+  <script defer src="bundlea498df9faf3038c59d55.js"></script></head>
   <body class="container">
     <header>
       <div class="logo text-white"></div>
       <nav>
         <ul class="menu">
           <li class="menu-item active text-white item-counter">Tv Shows(59)</li>
-          <li class="menu-item text-white">Schedule</li>
-          <li class="menu-item text-white">Episodes</li>
-          <li class="menu-item text-white">People</li>
+          <li class="menu-item text-white hide">Schedule</li>
+          <li class="menu-item text-white hide">Episodes</li>
+          <li class="menu-item text-white hide">People</li>
         </ul>
       </nav>
     </header>
-    <main class="tvshow-list d-flex align-items-center justify-content-center flex-wrap"></main>    
+    <main
+      class="tvshow-list d-flex align-items-center justify-content-center flex-wrap"
+    ></main>
     <footer class="p-3 m-0 m-0 p-0">
       <div class="footer-container container text-dark mx-auto w-100">
         <p class="footer-text">
@@ -45,53 +62,66 @@
       </div>
     </footer>
 
-<!-- modal -->
+    <!-- modal -->
     <div id="item-modal" class="modal">
       <div class="card-container">
         <div class="header-container">
-            <div class="modal-header">
-              <span class="close">&times;</span>
-            </div> 
+          <div class="modal-header">
+            <span class="close">&times;</span>
+          </div>
         </div>
         <div class="modal-body">
           <div class="image-container">
-            <img id="tv-show-img" src="https://catholicreview.org/wp-content/uploads/2021/07/20210623T1100-MOVIE-REVIEW-F9-FAST-SAGA-1250672.jpg" alt="modal image">
+            <img
+              id="tv-show-img"
+              src="https://catholicreview.org/wp-content/uploads/2021/07/20210623T1100-MOVIE-REVIEW-F9-FAST-SAGA-1250672.jpg"
+              alt="modal image"
+            />
           </div>
-          <span data-id = '' id ='show-id'></span>
+          <span data-id="" id="show-id"></span>
           <h3 id="tv-show-title">Title</h3>
           <h3>Genres</h3>
-          <div  class="genres" id="genres">
-          
-          </div>
-           <h3>Summary</h3>
-           <div id="summary">
-
-           </div>
-           <div class="content">
-              <div class="commet-list-container">
-                <h3 class="d-flex justify-content-center w-100">Comment <small id="no-of-comments">(0)</small> </h3>
-              <ul class="comment-list">
-               
-              </ul>
+          <div class="genres" id="genres"></div>
+          <h3>Summary</h3>
+          <div id="summary"></div>
+          <div class="content">
+            <div class="commet-list-container">
+              <h3 class="d-flex justify-content-center w-100">
+                Comment <small id="no-of-comments">(0)</small>
+              </h3>
+              <ul class="comment-list"></ul>
             </div>
-              <div class="form-container">
-                <h3 class ='d-flex w-100 justify-content-center'>Add comment <small id="message"></small></h3>
-                <form action="#">
-                  <input type="text" name="name" id="name" placeholder="You name">
-                  <textarea id="insights" name="insights" rows="4" cols="50" placeholder="Your insights"></textarea>
-                  <button type="button" id='add-comment' >Comment</button>
-                </form>
-              </div>
+            <div class="form-container">
+              <h3 class="d-flex w-100 justify-content-center">
+                Add comment <small id="message"></small>
+              </h3>
+              <form action="#">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="You name"
+                />
+                <textarea
+                  id="insights"
+                  name="insights"
+                  rows="4"
+                  cols="50"
+                  placeholder="Your insights"
+                ></textarea>
+                <button type="button" id="add-comment">Comment</button>
+              </form>
+            </div>
           </div>
         </div>
-  </div>
-  </div>
+      </div>
+    </div>
 
-  <script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-  crossorigin="anonymous"
-></script>
-<script src="./index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
   </body>
 </html>
